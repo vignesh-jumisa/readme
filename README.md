@@ -33,10 +33,19 @@ sudo apt -y install jenkins
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 ```
+### Python installation
+Need to install Python to execute upcoming Python-based script
 
-
-
-
+```
+# Python installation steps
+yes "" | sudo add-apt-repository universe
+sudo apt install python2-minimal -y
+sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+sudo update-alternatives --config python
+sudo apt install curl -y
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
+sudo python2 get-pip.py
+```
 ### Create Admin User
 Now that we have downloaded and installed Jenkins, we can proceed to setup the bash script to create a new admin user, download recommended plugins and then confirm the Jenkins URL.
 
