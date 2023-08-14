@@ -1,7 +1,3 @@
-
-
-
-
 # Installation of Jenkins and plugins via user data
 
 In this section, we will learn how to install Jenkins and the plugins via user data.
@@ -12,13 +8,13 @@ This phase includes:
      instance.
    * How to unlock Jenkins using a script.
    * Steps to create a Jenkins admin user by using user data.
-   * Steps to install recomended plugins suing script.
+   * Steps to install recommended plugins using a script.
 
-Before making the hands dirty,lets have 
-a short introduction about jenkins.
+Before making the hands dirty, let's have 
+a short introduction about Jenkins.
 
 ## What is Jenkins?
- * Jenkins is a self-contained, open source automation server which can be used to automate all sorts of tasks related to building, testing, and delivering or deploying software.
+ * Jenkins is a self-contained, open-source automation server that can be used to automate all sorts of tasks related to building, testing, and delivering or deploying software.
 
 * Jenkins can be installed through native system packages, Docker, or even run standalone by any machine with a Java Runtime Environment (JRE) installed.
 
@@ -137,4 +133,4 @@ In the URL variable, you should put the URL through which you will access Jenkin
 Once all these steps have been completed, you should be able to login into Jenkins and be prompted with the home page:
 ![Screenshot from 2023-08-14 13-44-21](https://github.com/vignesh-jumisa/readme/assets/141608315/5ec84140-7ff5-4842-aeee-75c307a81718)
 
-After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public dns if you are on the cloud) to accesss jenkins in your browser.
+After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public dns if you are on the cloud) to access Jenkins in your browser.
