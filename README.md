@@ -1,4 +1,9 @@
+
+
+
+
 # Installation of Jenkins and plugins via user data
+
 In this section, we will learn how to install Jenkins and the plugins via user data.
 
 This phase includes:
@@ -7,10 +12,20 @@ This phase includes:
      instance.
    * How to unlock Jenkins using a script.
    * Steps to create a Jenkins admin user by using user data.
-   * Steps to install recommended plugins using script.
+   * Steps to install recomended plugins suing script.
 
-### Install Jenkins
-If you are on a Debian distribution (Ubuntu, Parrot, etc.) you can use the following bash script:
+Before making the hands dirty,lets have 
+a short introduction about jenkins.
+
+## What is Jenkins?
+ * Jenkins is a self-contained, open source automation server which can be used to automate all sorts of tasks related to building, testing, and delivering or deploying software.
+
+* Jenkins can be installed through native system packages, Docker, or even run standalone by any machine with a Java Runtime Environment (JRE) installed.
+
+### Download and Install Jenkins
+Since Jenkins is written in Java, it needs the JDK to exists in the machine to be able to run, so we first need to download the JDK and then Jenkins.
+
+If you are on a Debian distribution you can use the following bash script:
 ```
 #! /bin/bash
 sudo apt update
@@ -23,22 +38,14 @@ sudo systemctl start jenkins
 sudo systemctl enable jenkins
 ```
 
-### Python installation
-Need to install Python to execute upcoming Python-based script
-Note: Python 2 is Recommended.
 
-```
-# Python installation steps
-yes "" | sudo add-apt-repository universe
-sudo apt install python2-minimal -y
-sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
-sudo update-alternatives --config python
-sudo apt install curl -y
-curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py
-sudo python2 get-pip.py
-```
+
 
 ### Create Admin User
+Now that we have downloaded and installed Jenkins, we can proceed to setup the bash script to create a new admin user, download recommended plugins and then confirm the Jenkins URL.
+
+In order to create an admin user, we can use the following script:
+
 
 ```
 #! /bin/bash
@@ -61,7 +68,7 @@ curl -X POST -u "admin:$password" $url/setupWizard/createAdminUser \
         --cookie $cookie_jar \
         --data-raw "username=$username&password1=$new_password&password2=$new_password&fullname=$fullname&email=$email&Jenkins-Crumb=$only_crumb&json=%7B%22username%22%3A%20%22$username%22%2C%20%22password1%22%3A%20%22$new_password%22%2C%20%22%24redact%22%3A%20%5B%22password1%22%2C%20%22password2%22%5D%2C%20%22password2%22%3A%20%22$new_password%22%2C%20%22fullname%22%3A%20%22$fullname%22%2C%20%22email%22%3A%20%22$email%22%2C%20%22Jenkins-Crumb%22%3A%20%22$only_crumb%22%7D&core%3Aapply=&Submit=Save&json=%7B%22username%22%3A%20%22$username%22%2C%20%22password1%22%3A%20%22$new_password%22%2C%20%22%24redact%22%3A%20%5B%22password1%22%2C%20%22password2%22%5D%2C%20%22password2%22%3A%20%22$new_password%22%2C%20%22fullname%22%3A%20%22$fullname%22%2C%20%22email%22%3A%20%22$email%22%2C%20%22Jenkins-Crumb%22%3A%20%22$only_crumb%22%7D"
 ```
-At this point, if we were to open the browser at localhost:8080, we should be greeted with the Jenkins Login Page:
+At this point if we were to open the browser at localhost:8080 , we should be greeted with the Jenkins Login Page:
 ![Screenshot from 2023-08-14 13-40-14](https://github.com/vignesh-jumisa/readme/assets/141608315/09a20f51-d9e0-4c49-a7d8-dfa4ade26680)
 
 And not with the ‘Unlock Jenkins’ page:
@@ -69,6 +76,7 @@ And not with the ‘Unlock Jenkins’ page:
 ![Screenshot from 2023-08-14 13-42-50](https://github.com/vignesh-jumisa/readme/assets/141608315/af5a5f5a-d951-48b0-9f96-506c821a40f0)
 
 ### Install Recommended Plugins
+In order to install recommended plugins, we can use the following script:
 
 ```
 #! /bin/bash
@@ -96,6 +104,8 @@ curl -X POST -u "$user:$password" $url/pluginManager/installPlugins \
 
   ### Confirm Jenkins URL
 
+If we were to log in with the credentials we have provided Jenkins, we would be prompt with the page asking us to install the plugins. But we can do this step via the following bash script.
+
   ```
 #! /bin/bash
 
@@ -122,13 +132,9 @@ curl -X POST -u "$user:$password" $url/setupWizard/configureInstance \
   --cookie $cookie_jar \
   --data-raw "rootUrl=$url_urlEncoded%2F&Jenkins-Crumb=$only_crumb&json=%7B%22rootUrl%22%3A%20%22$url_urlEncoded%2F%22%2C%20%22Jenkins-Crumb%22%3A%20%22$only_crumb%22%7D&core%3Aapply=&Submit=Save&json=%7B%22rootUrl%22%3A%20%22$url_urlEncoded%2F%22%2C%20%22Jenkins-Crumb%22%3A%20%22$only_crumb%22%7D"
 ```
-In the URL variable, you should put the URL through which you will access Jenkins. If you are on an Amazon instance, you can put the public DNS name (which should be something like ip-10-0-0-60.ap-south-1.compute.internal. If you have installed Jenkins on your machine, you can put http://localhost:8080 .
+In the URL variable, you should put the URL through which you will access Jenkins. If you are on an amazon instance, you can put the public DNS name (which should be something like ip-10-0-0-60.ap-south-1.compute.internal . If you have installed jenkins on your machine, you can put http://localhost:8080 .
 
 Once all these steps have been completed, you should be able to login into Jenkins and be prompted with the home page:
 ![Screenshot from 2023-08-14 13-44-21](https://github.com/vignesh-jumisa/readme/assets/141608315/5ec84140-7ff5-4842-aeee-75c307a81718)
 
-
-After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public DNS if you are on the cloud) to access Jenkins in your browser.
-
-NOTE: while executing this script as user data you need to run the entire above code as a single script.
-
+After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public dns if you are on the cloud) to accesss jenkins in your browser.
