@@ -1,7 +1,10 @@
-# Installation of Jenkins and plugins via userdata
-In this section, we will learn how to install jeankins and the plugins via userdata.
-nce
-This phase includes:
-*How to install jenkins using userdata on a debian instace.
+# Installation of Jenkins and plugins via user data
+In this section, we will learn how to install Jenkins and the plugins via user data.
 
+This phase includes:
+
+*How to install Jenkins using user data on a Debian instance.
+*How to unlock Jenkins using a script.
+*Steps to create a Jenkins admin user by using user data.
+*
 
