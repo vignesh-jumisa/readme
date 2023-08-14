@@ -7,7 +7,7 @@ This phase includes:
      instance.
    * How to unlock Jenkins using a script.
    * Steps to create a Jenkins admin user by using user data.
-   * Steps to install recomended plugins suing script.
+   * Steps to install recommended plugins using script.
 
 ### Download and Install Jenkins
 If you are on a Debian distribution (Ubuntu, Parrot, etc.) you can use the following bash script:
@@ -48,10 +48,11 @@ curl -X POST -u "admin:$password" $url/setupWizard/createAdminUser \
         --data-raw "username=$username&password1=$new_password&password2=$new_password&fullname=$fullname&email=$email&Jenkins-Crumb=$only_crumb&json=%7B%22username%22%3A%20%22$username%22%2C%20%22password1%22%3A%20%22$new_password%22%2C%20%22%24redact%22%3A%20%5B%22password1%22%2C%20%22password2%22%5D%2C%20%22password2%22%3A%20%22$new_password%22%2C%20%22fullname%22%3A%20%22$fullname%22%2C%20%22email%22%3A%20%22$email%22%2C%20%22Jenkins-Crumb%22%3A%20%22$only_crumb%22%7D&core%3Aapply=&Submit=Save&json=%7B%22username%22%3A%20%22$username%22%2C%20%22password1%22%3A%20%22$new_password%22%2C%20%22%24redact%22%3A%20%5B%22password1%22%2C%20%22password2%22%5D%2C%20%22password2%22%3A%20%22$new_password%22%2C%20%22fullname%22%3A%20%22$fullname%22%2C%20%22email%22%3A%20%22$email%22%2C%20%22Jenkins-Crumb%22%3A%20%22$only_crumb%22%7D"
 ```
 At this point if we were to open the browser at localhost:8080 , we should be greeted with the Jenkins Login Page:
-![Alt text](image.png)
+![Screenshot from 2023-08-14 13-40-14](https://github.com/vignesh-jumisa/readme/assets/141608315/09a20f51-d9e0-4c49-a7d8-dfa4ade26680)
+
 And not with the ‘Unlock Jenkins’ page:
 
-![Alt text](image-1.png)
+![Screenshot from 2023-08-14 13-42-50](https://github.com/vignesh-jumisa/readme/assets/141608315/af5a5f5a-d951-48b0-9f96-506c821a40f0)
 
 ### Install Recommended Plugins
 In order to install recommended plugins, we can use the following script:
@@ -111,8 +112,9 @@ curl -X POST -u "$user:$password" $url/setupWizard/configureInstance \
 In the URL variable, you should put the URL through which you will access Jenkins. If you are on an amazon instance, you can put the public DNS name (which should be something like ip-10-0-0-60.ap-south-1.compute.internal . If you have installed jenkins on your machine, you can put http://localhost:8080 .
 
 Once all these steps have been completed, you should be able to login into Jenkins and be prompted with the home page:
-![Alt text](image-2.png)
+![Screenshot from 2023-08-14 13-44-21](https://github.com/vignesh-jumisa/readme/assets/141608315/5ec84140-7ff5-4842-aeee-75c307a81718)
 
-After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public dns if you are on the cloud) to accesss jenkins in your browser.
+
+After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public dns if you are on the cloud) to access Jenkins in your browser.
 
 
