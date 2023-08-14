@@ -127,7 +127,7 @@ Once all these steps have been completed, you should be able to login into Jenki
 ![Screenshot from 2023-08-14 13-44-21](https://github.com/vignesh-jumisa/readme/assets/141608315/5ec84140-7ff5-4842-aeee-75c307a81718)
 
 
-After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public dns if you are on the cloud) to access Jenkins in your browser.
+After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public DNS if you are on the cloud) to access Jenkins in your browser.
 
-NOTE: while executing this script as a user data you need to run the entire script as a single script.
+NOTE: while executing this script as user data you need to run the entire above code as a single script.
 
