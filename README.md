@@ -25,6 +25,7 @@ sudo systemctl enable jenkins
 
 ### Python installation
 Need to install Python to execute upcoming Python-based script
+Note: Python 2 is Recommended.
 
 ```
 # Python installation steps
