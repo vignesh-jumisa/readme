@@ -22,6 +22,12 @@ sudo apt -y install jenkins
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 ```
+
+### Need to install Python to execute upcoming python based script
+
+
+
+
 ### Create Admin User
 In order to create an admin user, we can use the following script:
 
@@ -109,7 +115,7 @@ curl -X POST -u "$user:$password" $url/setupWizard/configureInstance \
   --cookie $cookie_jar \
   --data-raw "rootUrl=$url_urlEncoded%2F&Jenkins-Crumb=$only_crumb&json=%7B%22rootUrl%22%3A%20%22$url_urlEncoded%2F%22%2C%20%22Jenkins-Crumb%22%3A%20%22$only_crumb%22%7D&core%3Aapply=&Submit=Save&json=%7B%22rootUrl%22%3A%20%22$url_urlEncoded%2F%22%2C%20%22Jenkins-Crumb%22%3A%20%22$only_crumb%22%7D"
 ```
-In the URL variable, you should put the URL through which you will access Jenkins. If you are on an amazon instance, you can put the public DNS name (which should be something like ip-10-0-0-60.ap-south-1.compute.internal . If you have installed jenkins on your machine, you can put http://localhost:8080 .
+In the URL variable, you should put the URL through which you will access Jenkins. If you are on an Amazon instance, you can put the public DNS name (which should be something like ip-10-0-0-60.ap-south-1.compute.internal. If you have installed Jenkins on your machine, you can put http://localhost:8080 .
 
 Once all these steps have been completed, you should be able to login into Jenkins and be prompted with the home page:
 ![Screenshot from 2023-08-14 13-44-21](https://github.com/vignesh-jumisa/readme/assets/141608315/5ec84140-7ff5-4842-aeee-75c307a81718)
@@ -117,4 +123,5 @@ Once all these steps have been completed, you should be able to login into Jenki
 
 After Jenkins has been installed and started, navigate to http://localhost:8080 (or the public dns if you are on the cloud) to access Jenkins in your browser.
 
+NOTE: while executing this script as a user data you need to run the entire script as a single script.
 
