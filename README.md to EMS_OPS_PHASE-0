@@ -1,0 +1,7 @@
+# readme
+GIT-HUB] 
+# In this Section we are going to 
+* We created a Directory called EMS-OPS-Oct-2023
+* Initialize the repository using the “git init” command 
+* And we are going to pull a repo from the Jumisa organization's 
+* After that add the remote repo origin "git remote add origin git@github.com:jumisa/ems-ops.git"
